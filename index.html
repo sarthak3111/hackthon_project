@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head >
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Civic Issue Reporter</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+</head>
+<body class="body" >
+   
+    <div class="ticket">
+  <div class="ticket-header">
+    <span class="ticket-label">Civic Issue Reporter</span>
+    
+  </div>
+
+  <h1 id="heading">Report a civic issue</h1>
+
+  <form>
+    <label for="file">Attach a photo</label>
+    <input type="file" id="file" required>
+
+    <label for="text">Description</label>
+    <textarea id="text" rows="4" required placeholder="What's the problem, and where?"></textarea>
+
+    <input type="submit" value="Submit report">
+  </form>
+</div>
+
+<div id="result"></div>
+   
+    
+    
+</body>
+<script src="script.js"></script>
+</html>

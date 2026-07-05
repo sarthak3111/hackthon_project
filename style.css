@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap');
+
+:root {
+  --asphalt: #1E2225;
+  --paper: #F6F1E4;
+  --ink: #23262B;
+  --stamp-navy: #2B3A55;
+  --hazard-red: #C23B22;
+  --signal-amber: #B9812E;
+  --civic-green: #3F6B4C;
+  --line: rgba(35, 38, 43, 0.15);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--asphalt);
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,0.03) 0, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(255,255,255,0.02) 0, transparent 40%);
+  font-family: 'Inter', sans-serif;
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48px 16px;
+}
+
+.ticket {
+  background: var(--paper);
+  width: 100%;
+  max-width: 480px;
+  padding: 28px 32px 32px;
+  border-radius: 6px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+  position: relative;
+}
+
+.ticket::after {
+  content: "";
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  bottom: -1px;
+  border-bottom: 2px dashed var(--line);
+}
+
+.ticket-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--stamp-navy);
+  opacity: 0.7;
+  margin-bottom: 18px;
+}
+
+h1 {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--stamp-navy);
+  margin: 0 0 24px;
+  border-bottom: 3px solid var(--stamp-navy);
+  padding-bottom: 10px;
+}
+
+label {
+  display: block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--stamp-navy);
+  margin: 18px 0 6px;
+}
+
+input[type="file"], textarea {
+  width: 100%;
+  border: 1.5px solid var(--line);
+  background: #fff;
+  padding: 10px 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+input[type="file"]:focus, textarea:focus {
+  outline: 2px solid var(--stamp-navy);
+  outline-offset: 1px;
+}
+
+input[type="submit"] {
+  margin-top: 24px;
+  width: 100%;
+  background: var(--stamp-navy);
+  color: var(--paper);
+  border: none;
+  padding: 14px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+input[type="submit"]:hover { background: #1d2840; }
+input[type="submit"]:focus-visible { outline: 3px solid var(--signal-amber); outline-offset: 2px; }
+
+#result {
+  width: 100%;
+  max-width: 480px;
+  margin-top: 20px;
+}
+
+#result:empty { display: none; }
+
+.result-card {
+  background: var(--paper);
+  border-radius: 6px;
+  padding: 24px 28px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+}
+
+.stamp {
+  display: inline-block;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border: 2.5px solid currentColor;
+  border-radius: 3px;
+  transform: rotate(-4deg);
+  animation: stamp-in 0.25s ease-out;
+}
+
+.stamp.high { color: var(--hazard-red); }
+.stamp.medium { color: var(--signal-amber); }
+.stamp.low { color: var(--civic-green); }
+
+@keyframes stamp-in {
+  from { transform: rotate(-4deg) scale(1.6); opacity: 0; }
+  to { transform: rotate(-4deg) scale(1); opacity: 1; }
+}
+
+.field {
+  margin-top: 16px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.field b {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--stamp-navy);
+  display: block;
+  margin-bottom: 2px;
+}
+
+textarea.email-draft {
+  width: 100%;
+  margin-top: 6px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12.5px;
+  line-height: 1.6;
+  padding: 12px;
+  background: #fff;
+  border: 1.5px solid var(--line);
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stamp { animation: none; }
+}
+
+@media (max-width: 520px) {
+  .ticket, .result-card { padding: 20px; }
+  h1 { font-size: 22px; }
+}
